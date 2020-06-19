@@ -1,21 +1,34 @@
 import React from 'react';
-import List from './List';
-import STORE from './store';
+import { STORE } from './store'
+import { List } from './List';
 import './App.css';
 
-function App() {
-  return (
-    <main className="App">
-    <header className="App-header">
-      <h1>Trelloyes!</h1>
-    </header>
-    <div className="App-list">
-      {STORE.lists.map(listItem => (
-        <List key={listItem.id} header={listItem.header} cardIds={listItem.cardIds} />
-      ))}
-      </div>
-  </main>
-  );
-}
+export default class App extends React.Component {
 
-export default App;
+	state = { STORE };
+
+	render() {
+
+		return (
+
+			<div className="App">
+
+				<header className="App-header">
+
+					<h1>Trelloyes!</h1>
+
+				</header>
+				 
+				<main>
+	
+					<List lists = { this.state.STORE.lists } allCards = { this.state.STORE.allCards } />
+	
+				</main>
+
+			</div>
+
+		)
+
+	}
+
+}

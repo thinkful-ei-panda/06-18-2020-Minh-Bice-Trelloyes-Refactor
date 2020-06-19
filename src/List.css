@@ -1,15 +1,17 @@
 /* LIST STYLES */
 
 .List {
+  flex: 1;
   min-width: 218px;
+  max-width: 218px;
+  margin: 0 auto 14px auto;
 }
 
-.List:not(:first-of-type) {
+/*.List:not(:first-of-type) {
   margin-left: 8px;
-}
+}*/
 
-.List-header h2,
-.List-cards h3 {
+.List-header h2, .List-cards h3 {
   margin: 0;
 }
 
@@ -18,8 +20,7 @@
   padding: 10px 8px 8px;
 }
 
-.List-header,
-.List-cards {
+.List-header, .List-cards {
   background-color: #dfe3e6;
   padding: 0 6px 4px;
 }

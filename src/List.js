@@ -1,25 +1,37 @@
 import React from "react";
-import Card from "./Card";
-import STORE from './store';
+import { Cards } from "./Card";
 import './List.css';
 
-function List(props) {
-  return (
-    <section className="List">
-      <header className="List-header">
-        <h2>{props.header}</h2>
-      </header>
-      <div className="List-cards">
-        {props.cardIds.map(listItem => (
-            <Card key={STORE.allCards[listItem].id} title={STORE.allCards[listItem].title} content={STORE.allCards[listItem].content} />
-        ))}
-        
-        <button type="button" className="List-add-button">
-          + Add Random Card
-        </button>
-      </div>
-    </section>
-  );
-}
+export class List extends React.Component {
+	
+	render () {
 
-export default List;
+		return this.props.lists.map ( ( list, index ) => (
+			
+			<section className="List">
+				
+				<header className="List-header">
+				
+					<h2>{ list.header }</h2>
+
+				</header>
+
+				<div className="List-cards">
+					
+						<Cards cards = { this.props.allCards } cardIds = { list.cardIds } />
+
+						<button type="button" className="List-add-button">
+						
+							+ Add Random Card
+
+						</button>
+
+				</div>
+
+			</section>
+
+		))
+		
+	}
+
+}
