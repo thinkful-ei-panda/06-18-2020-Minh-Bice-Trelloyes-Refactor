@@ -7,6 +7,22 @@ export default class App extends React.Component {
 
 	state = { STORE };
 
+	addCard = ( card, id ) => {
+
+		let listUpdate = this.state.STORE.lists.find ( list => list.id === id );
+
+		listUpdate.cardIds = [ ...listUpdate.cardIds, card.id ];
+
+		let newLists = [ ...this.state.STORE.lists, listUpdate ];
+
+		let newAllCards = { ...this.state.STORE.allCards };
+		
+		newAllCards[ card.id ] = card;
+
+		this.setState ({ STORE: { lists: newLists, allCards: newAllCards }});
+	
+	};
+	
 	render() {
 
 		return (
@@ -20,9 +36,13 @@ export default class App extends React.Component {
 				</header>
 				 
 				<main>
+					
+					{ this.state.STORE.lists.map ( ( list, index ) => (
 	
-					<List lists = { this.state.STORE.lists } allCards = { this.state.STORE.allCards } />
-	
+						<List addCard = { this.addCard } list = { list } allCards = { this.state.STORE.allCards } />
+					
+					))}
+
 				</main>
 
 			</div>

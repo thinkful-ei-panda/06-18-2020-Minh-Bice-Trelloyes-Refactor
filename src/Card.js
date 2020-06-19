@@ -3,7 +3,7 @@ import './Card.css';
 export class Cards extends React.Component {
 
 	render () {
-
+		
 		return this.props.cardIds.map ( ( card, index ) => (
 
 			<div className="Card">
