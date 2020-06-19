@@ -13,7 +13,7 @@ export default class App extends React.Component {
 
 		listUpdate.cardIds = [ ...listUpdate.cardIds, card.id ];
 
-		let newLists = [ ...this.state.STORE.lists, listUpdate ];
+		let newLists = this.state.STORE.lists;
 
 		let newAllCards = { ...this.state.STORE.allCards };
 		

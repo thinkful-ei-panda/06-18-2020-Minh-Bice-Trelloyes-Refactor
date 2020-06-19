@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from "react";
 import { Cards } from "./Card";
 import './List.css';
 
@@ -20,20 +20,19 @@ export class List extends React.Component {
 		
 		let rando = Math.floor(Math.random() * Math.floor(100000));
 
-		this.props.addCard ({
-			
-			//good for displaying card
-			//id: this.props.list.cardIds.length + 1,
+		this.props.addCard (
 
-			id: rando,
+			{
 
-			title: this.state.title,
-
-			content: this.state.content,
-
-		},
+				id: rando,
+	
+				title: `Random Card ${rando}`,
+	
+				content: 'lorem ipsum',
+	
+			},
 		
-		this.props.list.id
+			this.props.list.id
 		
 		);
 	
@@ -59,20 +58,7 @@ export class List extends React.Component {
 			
 					<form onSubmit = { this.handleSubmit }>
 	
-						<input
-    						type = 'text'
-							id = 'title'
-        					value = { this.state.title }
-							onChange = { this.handleChange }
-							placeholder = 'Enter your title here'
-					    />
-						<input
-							type = 'text'
-							id = 'content'
-        					value = { this.state.content }
-							onChange = { this.handleChange }
-							placeholder = 'Enter your content here'
-					    />
+						
 	
 					    <input type='submit' className="List-add-button" value='Add Card' />
 			
