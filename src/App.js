@@ -23,6 +23,22 @@ export default class App extends React.Component {
 	
 	};
 	
+	deleteCard = ( listNumber, cardNumber, cardId ) => {
+		
+		let newLists = this.state.STORE.lists;
+
+		let cardIdsUpdate = newLists.find ( list => parseInt ( list.id ) === ( listNumber + 1 ) )
+
+		cardIdsUpdate.cardIds.splice ( cardNumber, 1 );
+
+		newLists[ listNumber ].cardIds = [ ...cardIdsUpdate.cardIds ];
+		
+		let newAllCards = { ...this.state.STORE.allCards };
+
+		this.setState ({ STORE: { lists: newLists, allCards: newAllCards }});
+
+	};
+
 	render() {
 
 		return (
@@ -39,7 +55,7 @@ export default class App extends React.Component {
 					
 					{ this.state.STORE.lists.map ( ( list, index ) => (
 	
-						<List addCard = { this.addCard } list = { list } allCards = { this.state.STORE.allCards } />
+						<List deleteCard = { this.deleteCard } addCard = { this.addCard } listNumber = { index } list = { list } allCards = { this.state.STORE.allCards } />
 					
 					))}
 
@@ -49,6 +65,6 @@ export default class App extends React.Component {
 
 		)
 
-	}
+	};
 
 }
